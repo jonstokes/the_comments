@@ -1,9 +1,9 @@
 - if commentable.try(:comments_on?) || true
-  %h4.comments_sum
+  %h2.comments_sum
     - if commentable.comments_sum.zero?
-      Вы можете стать первым, кто оставит комментарий!
+      No comments
     - else
-      Комментариев: #{ commentable.comments_sum }
+      Comments (#{ commentable.comments_sum })
 
   - unless current_user
     .comments_description
