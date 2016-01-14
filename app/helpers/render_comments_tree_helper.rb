@@ -8,7 +8,7 @@
 # or use h.html_escape(node.content)
 # for escape potentially dangerous content
 module RenderCommentsTreeHelper
-  module Render 
+  module Render
     class << self
       attr_accessor :h, :options
 
@@ -82,8 +82,8 @@ module RenderCommentsTreeHelper
       end
 
       def userbar
-        anchor = h.link_to('#', '#comment_' + @comment.anchor)
-        title  = @comment.title.blank? ? t('the_comments.guest_name') : @comment.title
+        anchor = h.link_to(@comment.created_at.strftime("%m-%d-%Y %I:%M%P %Z"), '#comment_' + @comment.anchor)
+        title  = @comment.user.name
         "<div class='userbar'>#{ title } #{ anchor }</div>"
       end
 
