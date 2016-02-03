@@ -60,7 +60,7 @@ module RenderCommentsTreeHelper
 
       def published_comment
         "<li>
-          <div id='comment_#{@comment.anchor}' class='comment #{@comment.state}' data-comment-id='#{@comment.to_param}'>
+          <div id='comment_#{@comment.anchor}' class='comment #{@comment.state} panel panel-default' data-comment-id='#{@comment.to_param}'>
             <div>
               #{ avatar }
               #{ userbar }
@@ -69,7 +69,7 @@ module RenderCommentsTreeHelper
             </div>
           </div>
 
-          <div class='form_holder'></div>
+          <div class='form_holder container-fluid'></div>
           #{ children }
         </li>"
       end

@@ -1,4 +1,4 @@
-.logined_comment_form
+.logined_comment_form.container-fluid
   .user_data
     = link_to user_path(current_user), nopin: :nopin do
       = image_tag current_user.try(:avatar).try(:url, :thumb)
@@ -8,11 +8,7 @@
     = f.hidden_field :commentable_id,   value: commentable.id
     = f.hidden_field :parent_id, class: :parent_id
 
-    .user_name
-      %b= current_user.name.present? ? current_user.name : current_user.login
-    %label= t('the_comments.form.content')
-    %p= f.text_area :raw_content
+    %p= f.text_area :raw_content, placeholder: 'Add a comment...', class: 'form-control'
 
     %p
-      = f.submit t('the_comments.form.create'), class: :btn
-      = t('the_comments.form.thank_you')
+      = f.submit t('the_comments.form.create'), class: 'btn btn-default btn-sm'
