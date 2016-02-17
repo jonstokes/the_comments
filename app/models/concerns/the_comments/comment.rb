@@ -79,7 +79,11 @@ module TheComments
     end
 
     def define_default_state
-      self.state = TheComments.config.default_owner_state if user && user == holder
+      self.state = if user && user == holder
+        TheComments.config.default_owner_state
+      else
+        TheComments.config.default_state
+      end
     end
 
     def denormalize_commentable
