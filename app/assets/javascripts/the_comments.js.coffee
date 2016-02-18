@@ -61,15 +61,15 @@ $ ->
   $(document).on 'ajax:success', comment_forms, (request, response, status) ->
     form = $ @
     $('input[type=submit]', form).show()
-
     if typeof(response) is 'string'
       anchor = $(response).find('.comment').attr('id')
+      commentable_id = form.data('commentable-id')
       clear_comment_form()
       form.hide()
       $('.parent_id').val('')
       $('#new_comment').fadeIn()
       tree = form.parent().siblings('.nested_set')
-      tree = $('ol.comments_tree') if tree.length is 0
+      tree = $("ol.comments_tree[data-commentable=\"#{commentable_id}\"]") if tree.length is 0
       tree.append(response)
       #document.location.hash = anchor
     else

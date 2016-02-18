@@ -4,6 +4,6 @@
       %p You must be <a href='/users/sign_in'>logged in</a> to comment.
 
 .comments#comments
-  %ol.comments_tree{ data: { comments: { tolarance_time: TheComments.config.tolerance_time  } } }
+  %ol.comments_tree{ data: { commentable: commentable.id, comments: { tolarance_time: TheComments.config.tolerance_time  } } }
     = render partial: 'the_comments/haml/comment', locals: { tree: comments_tree }
   = render partial: 'the_comments/haml/form', locals: { commentable: commentable }

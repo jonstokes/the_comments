@@ -25,7 +25,9 @@ module TheComments
       before_action :define_commentable, only: [:create]
 
       # raise an errors
-      before_action -> { return render(json: { errors: @errors }) unless @errors.blank? }, only: [:create]
+      before_action -> {
+        return render(json: { errors: @errors }) unless @errors.blank?
+      }, only: [:create]
     end
 
     # App side methods (you can overwrite them)
